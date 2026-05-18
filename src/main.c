@@ -14,8 +14,8 @@ int main(int argc, char *argv[]) {
       command[strcspn(command, "\n")] = '\0';
       printf("%s: command not found\n", command);
       }
-    if(command == "exit"){
-      return 0;
+    if(strcmp(command, "exit" == 0)){
+      break;
     }
   }
   return 0;
