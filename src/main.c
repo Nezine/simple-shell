@@ -7,12 +7,13 @@ int main(int argc, char *argv[]) {
   setbuf(stdout, NULL);
 
   // TODO: Uncomment the code below to pass the first stage
-  printf("$ ");
-  char command[1024];
-if (fgets(command, sizeof(command), stdin)) {
-  command[strcspn(command, "\n")] = '\0';
-  printf("%s: command not found\n", command);
-}
-
+  while (1){
+    printf("$ ");
+    char command[1024];
+    if (fgets(command, sizeof(command), stdin)) {
+      command[strcspn(command, "\n")] = '\0';
+      printf("%s: command not found\n", command);
+      }
+  }
   return 0;
 }
