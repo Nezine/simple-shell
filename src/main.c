@@ -18,11 +18,16 @@ int main(int argc, char *argv[]) {
       else if(strncmp(command, "echo ", 5) == 0){
         printf("%s\n", command + 5);
       }
-      else if(strncmp(command, "type ", 5) == 0){
-        if(strncmp(command + 5, "type", 4) == 0 || strncmp(command + 5, "echo", 4) == 0 || strncmp(command + 5, "exit", 4) == 0){
-          printf("%s is a shell builtin\n", command + 5);
+      else if (strncmp(command, "type ", 5) == 0) {
+        char *name = command + 5;
+
+        // exact builtin check (not prefix)
+        if (strcmp(name, "type") == 0 || strcmp(name, "echo") == 0 || strcmp(name, "exit") == 0) {
+            printf("%s is a shell builtin\n", name);
+        } else {
+            // TODO: PATH search here
+            printf("%s: not found\n", name);
         }
-        else printf("%s: not found\n", command + 5);
       }
       else printf("%s: command not found\n", command);
       }
